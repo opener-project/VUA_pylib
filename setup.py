@@ -8,5 +8,5 @@ setup(name='VUA_pylib',
       url = 'https://github.com/cltl/VUA_pylib',
       author_email = 'r.izquierdobevia@vu.nl',
       package_dir = {'':''},
-      packages = ['lexicon','common','io','corpus_reader'],
+      packages = ['lexicon','common','io_utils','corpus_reader'],
       )
