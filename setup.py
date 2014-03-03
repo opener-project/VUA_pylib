@@ -2,7 +2,7 @@ from distutils.core import setup
 
 
 setup(name='VUA_pylib',
-      version='1.3',
+      version='1.4',
       description = 'Various KAF / NAF python helpers',
       author = 'Ruben Izquierdo',
       url = 'https://github.com/cltl/VUA_pylib',
