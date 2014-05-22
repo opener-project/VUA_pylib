@@ -15,7 +15,7 @@ for name in os.listdir(lib_name):
 
 setup(
     name         = lib_name,
-    version      = '1.5',
+    version      = '1.6',
     description  = 'Various KAF / NAF python helpers',
     author       = 'Ruben Izquierdo',
     url          = 'https://github.com/cltl/VUA_pylib',
