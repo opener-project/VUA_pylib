@@ -3,7 +3,7 @@ require 'rake/clean'
 LIB_NAME           = 'VUA_pylib'
 UPSTREAM_DIRECTORY = "upstream/#{LIB_NAME}-master"
 
-CLEAN.include('upstream')
+CLEAN.include('upstream', 'build', 'dist', 'MANIFEST')
 
 directory 'upstream' do |task|
   sh "wget https://github.com/cltl/#{LIB_NAME}/archive/master.zip"
