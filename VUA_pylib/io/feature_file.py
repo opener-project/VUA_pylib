@@ -82,7 +82,7 @@ class Cfeature_index:
             for feat,freq_feat in feats_for_example:
                 value = freq_feat
                 out_fic.write(' %d:%d' % (feat,value))
-            out_fic.write(' #'+clean_feats+'\n')
+            out_fic.write(' #'+clean_feats.encode('utf-8')+'\n')
             
     def encode_example_for_classification(self, feats,out_fic,my_class='0'):
         feats_for_example, clean_feats =self.__encode_features(feats,modify_index=False)
@@ -113,7 +113,7 @@ class Cfeature_file:
             fic = open(self.filename,'r')
             for line in fic:
                 if line[0] != '#':
-                    yield Cexample(line)
+                    yield Cexample(line.decode('utf-8'))
             fic.close()
     
    
