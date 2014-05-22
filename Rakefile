@@ -3,6 +3,10 @@ require 'rake/clean'
 LIB_NAME           = 'VUA_pylib'
 UPSTREAM_DIRECTORY = "upstream/#{LIB_NAME}-master"
 
+UPSTREAM_FILES = [
+  'README.md'
+]
+
 CLEAN.include('upstream', 'build', 'dist', 'MANIFEST')
 
 directory 'upstream' do |task|
@@ -21,12 +25,10 @@ directory LIB_NAME do |task|
   sh "mv #{UPSTREAM_DIRECTORY} #{task.name}"
 end
 
-file 'README.md' do |task|
-  sh "mv #{UPSTREAM_DIRECTORY}/#{task.name} #{task.name}"
-end
-
-file '.gitignore' do |task|
-  sh "mv #{UPSTREAM_DIRECTORY}/#{task.name} #{task.name}"
+UPSTREAM_FILES.each do |file|
+  file(file) do |task|
+    sh "mv #{UPSTREAM_DIRECTORY}/#{task.name} #{task.name}"
+  end
 end
 
 desc 'Syncs with the upstream package'
@@ -34,7 +36,6 @@ task :sync => [
   'upstream',
   'test_scripts',
   'README.md',
-  '.gitignore',
   LIB_NAME,
   'clean'
 ]

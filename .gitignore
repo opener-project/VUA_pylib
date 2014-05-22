@@ -1,7 +1,5 @@
-*~
-*.pyc
-.project
-.pydevproject
-build/*
-dist/*
+*.py[cod]
+__pycache__
 MANIFEST
+dist
+build
