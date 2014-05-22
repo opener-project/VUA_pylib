@@ -38,3 +38,8 @@ task :sync => [
   LIB_NAME,
   'clean'
 ]
+
+desc 'Builds the Python package'
+task :package do
+  sh 'python setup.py sdist'
+end
