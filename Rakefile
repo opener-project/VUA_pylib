@@ -3,7 +3,7 @@ require 'rake/clean'
 LIB_NAME           = 'VUA_pylib'
 UPSTREAM_DIRECTORY = "upstream/#{LIB_NAME}-master"
 
-CLEAN.include('upstream', "#{LIB_NAME}/README.md", "#{LIB_NAME}/.gitignore")
+CLEAN.include('upstream')
 
 directory 'upstream' do |task|
   sh "wget https://github.com/cltl/#{LIB_NAME}/archive/master.zip"
@@ -21,5 +21,20 @@ directory LIB_NAME do |task|
   sh "mv #{UPSTREAM_DIRECTORY} #{task.name}"
 end
 
+file 'README.md' do |task|
+  sh "mv #{UPSTREAM_DIRECTORY}/#{task.name} #{task.name}"
+end
+
+file '.gitignore' do |task|
+  sh "mv #{UPSTREAM_DIRECTORY}/#{task.name} #{task.name}"
+end
+
 desc 'Syncs with the upstream package'
-task :sync => ['upstream', 'test_scripts', LIB_NAME, 'clean']
+task :sync => [
+  'upstream',
+  'test_scripts',
+  'README.md',
+  '.gitignore',
+  LIB_NAME,
+  'clean'
+]
